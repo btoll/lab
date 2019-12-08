@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>A ridiculous web app</title>
+</head>
+
+<body>
+    <h1>Welcome, there is not much to see here!</h1>
+    <p id="user"></p>
+    <p id="occupation"></p>
+    <p id="location"></p>
+
+<script>
+    const get =
+        document.getElementById.bind(document);
+
+    document.addEventListener("DOMContentLoaded", async () => {
+        const res = await fetch("http://localhost:9001/app.json");
+        const {
+            user,
+            occupation,
+            location
+        } = JSON.parse(await res.text());
+
+        get("user").textContent = user;
+        get("occupation").textContent = occupation;
+        get("location").textContent = location;
+    });
+</script>
+</body>
+</html>
+
+
