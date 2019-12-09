@@ -1,0 +1,49 @@
+dialog#modal {
+    background-color: white;
+    border: 1px solid tan;
+}
+dialog#modal::backdrop {
+    background-color: #ccc;
+    opacity: .8;
+}
+dialog#modal div#generateAccount {
+    margin: 1em;
+    padding: 0;
+}
+dialog#modal div#generateAccount div#signature + div {
+    margin: 0 2em;
+}
+dialog#modal div#generateAccount div#secretKey {
+    height: 400px;
+    font-family: monospace;
+    overflow: auto;
+    white-space: pre;
+}
+div#signature {
+    background-color: white;
+    border: 2px solid #000;
+    font-style: italic;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+div#signature span {
+    font-style: normal;
+}
+div#signature span.func {
+    color: purple;
+    font-weight: bold;
+}
+div#signature span.param {
+    color: olive;
+}
+form {
+    margin: 0;
+    padding: 10px;
+}
+form label {
+    font-weight: bold;
+    display: inline-block;
+    margin: 0 10px 10px 0;
+    width: 170px;
+}
+

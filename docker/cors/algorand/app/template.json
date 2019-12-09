@@ -1,0 +1,62 @@
+{
+    "Genesis": {
+        "NetworkName": "hackathon-demo",
+        "Wallets": [
+            {
+                "Name": "Wallet1",
+                "Stake": 40,
+                "Online": true
+            },
+            {
+                "Name": "Wallet2",
+                "Stake": 20,
+                "Online": true
+            },
+            {
+                "Name": "Wallet3",
+                "Stake": 5,
+                "Online": false
+            },
+            {
+                "Name": "Wallet4",
+                "Stake": 35,
+                "Online": false
+            }
+        ]
+    },
+    "Nodes": [
+        {
+            "Name": "Primary",
+            "IsRelay": true,
+            "Wallets": [
+                {
+                    "Name": "Wallet1",
+                    "ParticipationOnly": false
+                }
+            ]
+        },
+        {
+            "Name": "Kilgore",
+            "Wallets": [
+                {
+                    "Name": "Wallet2",
+                    "ParticipationOnly": false
+                },
+                {
+                    "Name": "Wallet3",
+                    "ParticipationOnly": false
+                }
+            ]
+        },
+        {
+            "Name": "Trout",
+            "Wallets": [
+                {
+                    "Name": "Wallet4",
+                    "ParticipationOnly": false
+                }
+            ]
+        }
+    ]
+}
+

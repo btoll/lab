@@ -1,0 +1,25 @@
+FROM ubuntu:18.04
+
+RUN useradd -m btoll
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install curl python -y
+
+WORKDIR /home/btoll/hackathon
+
+#RUN curl -L https://github.com/btoll/hackathon/blob/master/algorand/downloads/algorand.bz2?raw=true | tar xjf -
+
+WORKDIR /home/btoll
+
+RUN curl --silent -L https://github.com/algorand/go-algorand-doc/blob/master/downloads/installers/linux_amd64/install_master_linux-amd64.tar.gz?raw=true | tar xzf - && \
+	./update.sh -c stable -n -p bin -d bin/data -i && \
+	chown -R btoll:btoll /home/btoll
+
+ENV PATH="/home/btoll/bin:$PATH"
+WORKDIR /home/btoll/hackathon
+
+#RUN goal network create -r demo-network -n hackathon-demo -t template.json && \
+#	goal network start -r demo-network && \
+#	for node in {Primary,Kilgore,Trout}; do goal kmd start -d demo-network/$node; done
+
+EXPOSE 8000
+CMD ["python", "-m", "SimpleHTTPServer", "8000"]
+
