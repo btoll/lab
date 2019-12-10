@@ -62,6 +62,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 getFromDisk(`${NETWORK}/${NODE}/${KMD_VERSION}/kmd.token`, false);
                 break;
 
+            case "kmd_config.json":
+                getFromDisk(`${NETWORK}/${NODE}/${KMD_VERSION}/kmd_config.json`, false);
+                break;
+
             /* ----------------------------------------------------------- */
             // algod API.
             /* ----------------------------------------------------------- */
@@ -76,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         templates.getNumber,
                         (_, $1) => ({
                             CALLBACK: "block",
-                            SIGNATURE: `func <span class="func">block</span>(<span class="param">roundNumber</span> int, <span class="param">headers={}</span> object)`
+                            SIGNATURE: `func <span id="docs" class="func">block</span>(<span class="param">roundNumber</span> int, <span class="param">headers={}</span> object)`
                         })[$1]
                     )
                 );
@@ -94,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             ADDRESS: account.addr,
                             MNEMONIC: mnemonic,
                             SECRET_KEY: JSON.stringify(algosdk.mnemonicToSecretKey(mnemonic), null, 4),
-                            SIGNATURE: `func <span class="func">generateAccount</span>()`
+                            SIGNATURE: `func <span id="docs" class="func">generateAccount</span>()`
                         })[$1]
                     )
                 );
@@ -114,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         templates.getNumber,
                         (_, $1) => ({
                             CALLBACK: "pendingTransactions",
-                            SIGNATURE: `func <span class="func">pendingTransactions</span>(<span class="param">maxTxns</span> int, <span class="param">headers={}</span> object)`
+                            SIGNATURE: `func <span id="docs" class="func">pendingTransactions</span>(<span class="param">maxTxns</span> int, <span class="param">headers={}</span> object)`
                         })[$1]
                     )
                 );
@@ -128,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         templates.sendRawTransaction,
                         (_, $1) => ({
                             TRANSACTION: _rawTransaction.blob,
-                            SIGNATURE: `func <span class="func">sendRawTransaction</span>(<span class="param">txn</span> string, <span class="param">headers={}</span> object)`
+                            SIGNATURE: `func <span id="docs" class="func">sendRawTransaction</span>(<span class="param">txn</span> string, <span class="param">headers={}</span> object)`
                         })[$1]
                     )
                 );
@@ -156,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         templates.getNumber,
                         (_, $1) => ({
                             CALLBACK: "statusAfterBlock",
-                            SIGNATURE: `func <span class="func">statusAfterBlock</span>(<span class="param">roundNumber</span> int, <span class="param">headers={}</span> object)`
+                            SIGNATURE: `func <span id="docs" class="func">statusAfterBlock</span>(<span class="param">roundNumber</span> int, <span class="param">headers={}</span> object)`
                         })[$1]
                     )
                 );
@@ -172,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         templates.createWallet,
                         (_, $1) => ({
                             CALLBACK: "createWallet",
-                            SIGNATURE: `func <span class="func">createWallet</span>(<span class="param">walletName</span> string, <span class="param">walletPassword</span> string, <span class="param">walletMDK = ""</span> string, <span class="param">walletDriverName = "sqlite"</span> string)`
+                            SIGNATURE: `func <span id="docs" class="func">createWallet</span>(<span class="param">walletName</span> string, <span class="param">walletPassword</span> string, <span class="param">walletMDK = ""</span> string, <span class="param">walletDriverName = "sqlite"</span> string)`
                         })[$1]
                     )
                 );
@@ -221,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         templates.walletHandle,
                         (_, $1) => ({
                             CALLBACK: "getWallet",
-                            SIGNATURE: `func <span class="func">getWallet</span>(<span class="param">walletHandle</span> string)`
+                            SIGNATURE: `func <span id="docs" class="func">getWallet</span>(<span class="param">walletHandle</span> string)`
                         })[$1]
                     )
                 );
@@ -234,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         (_, $1) => ({
                             SECRET_KEY: lastGeneratedAccount.addr || "",
                             CALLBACK: "importKey",
-                            SIGNATURE: `func <span class="func">importKey</span>(<span class="param">walletHandle</span> string, <span class="param">secretKey</span> UInt8Array)`
+                            SIGNATURE: `func <span id="docs" class="func">importKey</span>(<span class="param">walletHandle</span> string, <span class="param">secretKey</span> UInt8Array)`
                         })[$1]
                     )
                 );
@@ -253,7 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         templates.initWalletHandle,
                         (_, $1) => ({
                             SELECT: makeList("walletID", wallets),
-                            SIGNATURE: `func <span class="func">initWalletHandle</span>(<span class="param">walletID</span> string, <span class="param">walletPassword</span> string)`
+                            SIGNATURE: `func <span id="docs" class="func">initWalletHandle</span>(<span class="param">walletID</span> string, <span class="param">walletPassword</span> string)`
                         })[$1]
                     )
                 );
@@ -266,7 +270,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         templates.walletHandle,
                         (_, $1) => ({
                             CALLBACK: "listKeys",
-                            SIGNATURE: `func <span class="func">listKeys</span>(<span class="param">walletHandle</span> string)`
+                            SIGNATURE: `func <span id="docs" class="func">listKeys</span>(<span class="param">walletHandle</span> string)`
                         })[$1]
                     )
                 );
@@ -282,7 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         templates.walletHandle,
                         (_, $1) => ({
                             CALLBACK: "releaseWalletHandle",
-                            SIGNATURE: `func <span class="func">releaseWalletHandle</span>(<span class="param">walletHandle</span> string)`
+                            SIGNATURE: `func <span id="docs" class="func">releaseWalletHandle</span>(<span class="param">walletHandle</span> string)`
                         })[$1]
                     )
                 );
@@ -302,7 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         (_, $1) => ({
                             CALLBACK: "renameWallet",
                             SELECT: makeList("walletID", wallets),
-                            SIGNATURE: `func <span class="func">renameWallet</span>(<span class="param">walletID</span> string, <span class="param">walletPassword</span> string, <span class="param">newWalletName</span> string)`
+                            SIGNATURE: `func <span id="docs" class="func">renameWallet</span>(<span class="param">walletID</span> string, <span class="param">walletPassword</span> string, <span class="param">newWalletName</span> string)`
                         })[$1]
                     )
                 );
@@ -315,7 +319,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         templates.walletHandle,
                         (_, $1) => ({
                             CALLBACK: "renewWalletHandle",
-                            SIGNATURE: `func <span class="func">renewWalletHandle</span>(<span class="param">walletHandle</span> string)`
+                            SIGNATURE: `func <span id="docs" class="func">renewWalletHandle</span>(<span class="param">walletHandle</span> string)`
                         })[$1]
                     )
                 );
@@ -341,6 +345,28 @@ document.addEventListener("DOMContentLoaded", () => {
         switch (e.target.id) {
             case "cancelModal":
                 closeModal(/*withDelay=*/ false);
+                break;
+
+            case "docs":
+                debugger;
+                const links = {
+                    // algod
+                    block: "algod-rest-paths#getBlock",
+                    pendingTransactions: "algod-rest-paths#getPendingTransactions",
+                    statusAfterBlock: "algod-rest-paths#waitForBlock",
+
+                    // kmd
+                    createWallet: "kmd-rest-paths#createWallet",
+                    getWallet: "kmd-rest-paths#getWalletInfo",
+                    importKey: "kmd-rest-paths#importKey",
+                    initWalletHandle: "kmd-rest-paths#initWalletHandleToken",
+                    listKeys: "kmd-rest-paths#listKeysInWallet",
+                    releaseWalletHandle: "kmd-rest-paths#releaseWalletHandleToken",
+                    renameWallet: "kmd-rest-paths#renameWallet",
+                    renewWalletHandle: "kmd-rest-paths#renewWalletHandleToken"
+                };
+
+                open(`https://developer.algorand.org/docs/${links[e.target.textContent]}`);
                 break;
 
             case "getWalletHandleModal":

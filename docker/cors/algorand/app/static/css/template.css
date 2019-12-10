@@ -29,6 +29,9 @@ div#signature {
 div#signature span {
     font-style: normal;
 }
+div#signature span#docs {
+    cursor: pointer;
+}
 div#signature span.func {
     color: purple;
     font-weight: bold;
